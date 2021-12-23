@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { ACCESS_TOKN } from "../../constants/constants";
 import { Child as TChild, HandleCheckInStatus } from "../../types";
-import { useDate } from "../../utils/utils";
 import Child from "../Child/Child";
 
 const ChildrenList: FC<{
@@ -9,7 +8,7 @@ const ChildrenList: FC<{
   handleCheckedInStatus: (id: string) => void;
 }> = ({ Children, handleCheckedInStatus }) => {
   const handleCheckIn: HandleCheckInStatus = async id => {
-    const url = ` https://app.famly.co/api/v2/children/${id}/checkins?accessToken=${ACCESS_TOKN}&pickupTime=${useDate()}`;
+    const url = ` https://app.famly.co/api/v2/children/${id}/checkins?accessToken=${ACCESS_TOKN}&pickupTime=''`;
     try {
       const req = await fetch(url, { method: "POST" });
       const res = await req.json();

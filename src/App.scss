@@ -5,3 +5,13 @@
   margin: 0;
   padding: 0;
 }
+
+.main__container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1em;
+
+  &__title {
+    text-align: center;
+  }
+}
