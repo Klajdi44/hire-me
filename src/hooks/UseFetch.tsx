@@ -8,13 +8,14 @@ const useFetch = (url: string) => {
   const [loadingState, setLoadingState] = useState<LOADING_STATUS | null>(null);
 
   useEffect(() => {
+    setLoadingState(LOADING_STATUS.LOADING);
+
     fetch(url)
       .then(response => {
         if (!response.ok) {
           setLoadingState(null);
           throw new Error("something went wrong");
         }
-        setLoadingState(LOADING_STATUS.LOADING);
         return response.json();
       })
       .then(apiData => {

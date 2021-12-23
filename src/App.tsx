@@ -13,7 +13,7 @@ function App() {
   const observedElement = useRef(null);
   const observer = useRef(
     new IntersectionObserver(
-      ([entry], observer) => {
+      ([entry]) => {
         if (entry.isIntersecting) {
           setOffset(currentOffset => currentOffset + 5);
         }
@@ -25,6 +25,7 @@ function App() {
       }
     )
   );
+  // console.log(children);
 
   useEffect(() => {
     if (observedElement.current) {
@@ -35,10 +36,13 @@ function App() {
       observer.current.disconnect();
     };
   }, []);
-  console.log(children);
 
   useEffect(() => {
-    if (observedElement.current && offset > data?.children?.length) {
+    if (
+      observedElement.current &&
+      data?.children &&
+      offset > data?.children?.length
+    ) {
       observer.current.unobserve(observedElement.current);
     }
   }, [offset]);
@@ -60,6 +64,7 @@ function App() {
   };
   return (
     <main className="main__container">
+      <h1 className="main__container__title">Children list</h1>
       {error && <div>{error}</div>}
       {loadingState === LOADING_STATUS.LOADING && <div>loading...</div>}
       {children && (
