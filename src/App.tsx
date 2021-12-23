@@ -25,7 +25,6 @@ function App() {
       }
     )
   );
-  // console.log(children);
 
   useEffect(() => {
     if (observedElement.current) {
@@ -62,6 +61,7 @@ function App() {
     });
     setChildren(newChildrenList);
   };
+
   return (
     <main className="main__container">
       <h1 className="main__container__title">Children list</h1>
